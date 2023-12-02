@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sent!</title>
+    <title>Email Template</title>
 </head>
 <body>
-<h1>Sent an email!</h1>
+    <h1>Hello {{ user.username }},</h1>
+
+    <p>This is an example of an HTML email template created using Django.</p>
+
+    <p>Here's a list:</p>
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Thank you!</p>
 </body>
 </html>
