@@ -62,7 +62,8 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
+
             ],
         },
     },
@@ -127,12 +128,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'akhilesh7579@gmail.com'
-EMAIL_HOST_PASSWORD = 'pdjtmkaqdnjcuclk'
-EMAIL_HOST_TLS = True
-# EMAIL_HOST_SSL = False
+EMAIL_HOST_PASSWORD = 'guqlzwjbnuqzsfkb'
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # EMAIL_USE_LOCALTIME = True
-EMAIL_DEBUG = True
+DEBUG = True
 
 # EMAIL_FILEBASED = 'django.core.mail.backends.filebased.EmailBackend'

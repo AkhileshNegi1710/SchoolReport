@@ -1,23 +1,31 @@
+from django.shortcuts import render,redirect
+from .forms import contactForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.shortcuts import render
-from django.http import HttpResponse
-
-from StudentReport import settings
 
 
-def send_email_view(request):
-    # Assume you have a user and items data to pass into the template
-    user = request.user  # Fetch the user or use any user instance
-    items = ['Item 1', 'Item 2', 'Item 3']  # Sample list of items
+def index(request):
+    if request.method == 'POST':
+        form = contactForm(request.POST)
 
-    # Render the template with context data
-    html_message = render_to_string('studentWelcome/index.html', {'user': user, 'items': items})
 
-    # Send the email
-    send_mail('Hello Student',
-                      'Welcome to the Student Email',
-                      from_email=settings.EMAIL_HOST_USER, recipient_list=['akhileshnegi1710@gmail.com'], fail_silently=False,html_message=html_message
-    )
+        if form.is_valid():
+            # cleaned_data remove malicious emails
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
 
-    return HttpResponse('Email sent successfully!')
+            html = render_to_string('studentWelcome/sendEmail.html',{
+                'name':name,
+                'email':email,
+                'content':content
+            })
+
+            send_mail('Test Email','Hello','akhilesh7579@gmail.com',[email],html_message=html)
+            return redirect('index')
+    else:
+        form = contactForm()
+    return render(request, 'studentWelcome/index.html',{
+        'form':form
+    })
+

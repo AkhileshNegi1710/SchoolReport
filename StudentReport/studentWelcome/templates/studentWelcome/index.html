@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Email Template</title>
-</head>
+<html>
 <body>
-    <h1>Hello {{ user.username }},</h1>
+<form method="post" action=".">
+    {%csrf_token%}
 
-    <p>This is an example of an HTML email template created using Django.</p>
-
-    <p>Here's a list:</p>
-    <ul>
-        {% for item in items %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-
-    <p>Thank you!</p>
+    {{form.as_p}}
+    <button>Submit</button>
+</form>
 </body>
 </html>
